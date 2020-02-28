@@ -20,6 +20,18 @@ ytd-app[guide-persistent-and-visible] ytd-page-manager.ytd-app{
 }
 
 
+/*text*/
+.bold.yt-formatted-string{
+    font-weight:500;
+}
+
+
+/*ripple*/
+paper-ripple{
+    display:none;
+}
+
+
 /*tooltips*/
 .fade-in-animation.paper-tooltip{
     animation-duration:.2s;
@@ -38,15 +50,18 @@ ytd-app[guide-persistent-and-visible] ytd-page-manager.ytd-app{
 
 /*buttons*/
 ytd-button-renderer,
-ytd-toggle-button-renderer{
+ytd-toggle-button-renderer,
+ytd-button-renderer.force-icon-button{
     text-transform:none;
     font-size:1.1rem;
+    font-weight:normal;
 }
 paper-button.ytd-button-renderer,
 ytd-toggle-button-renderer.ytd-connected-app-renderer{
     padding:0 10px;
     height:28px;
     width:auto;
+    min-width:0;
 }
 ytd-toggle-button-renderer.style-default-active[is-icon-button]{
     color:#167ac6;
@@ -103,6 +118,32 @@ paper-button.ytd-subscribe-button-renderer[subscribed]::before{
 }
 paper-button.ytd-subscribe-button-renderer:hover[subscribed]::before{
     background:no-repeat url(//s.ytimg.com/yts/imgbin/www-hitchhiker-vflHFLZLR.webp) -175px -94px;
+}
+/*bell*/
+yt-icon-button.ytd-subscription-notification-toggle-button-renderer{
+    width:28px;
+    height:24px;
+    padding:0 4px;
+    border-radius:0 2px 2px 0;
+    margin-left:-5px;
+}
+ytd-subscription-notification-toggle-button-renderer #button.ytd-subscription-notification-toggle-button-renderer{
+    background-color:#f8f8f8;
+    border:1px solid #ccc;
+}
+ytd-subscription-notification-toggle-button-renderer #button.ytd-subscription-notification-toggle-button-renderer:hover{
+    background-color:#f0f0f0;
+    border-color:#c6c6c6;
+    box-shadow:0 1px rgba(0,0,0,.1);
+}
+button.yt-icon-button > yt-icon.ytd-subscription-notification-toggle-button-renderer{
+    background:no-repeat url(//s.ytimg.com/yts/imgbin/www-hitchhiker-vflHFLZLR.webp) -99px -605px;
+    background-size:auto;
+    width:18px;
+    height:18px;
+}
+yt-icon.ytd-subscription-notification-toggle-button-renderer svg{
+    display:none!important;
 }
 
 
@@ -261,12 +302,6 @@ ytd-notification-renderer{
 }
 #items.yt-multi-page-menu-section-renderer > ytd-notification-renderer.yt-multi-page-menu-section-renderer:hover:hover{
     background-color:#eee;
-}
-#button.ytd-menu-renderer{
-    --yt-icon-button-icon-width:20px;
-    --yt-icon-button-icon-height:20px;
-    width:20px;
-    height:20px;
 }
 #button.ytd-menu-renderer yt-icon.ytd-menu-renderer{
     color:#828282;
@@ -434,17 +469,18 @@ ytd-guide-entry-renderer[active] .title.ytd-guide-entry-renderer{
 
 /*badges*/
 .badge.ytd-badge-supported-renderer{
-    padding:0 4px;
-    height:13px;
-    font-size:1.1rem;
+    padding:0 5px;
+    height:1.3rem;
+    font-size:1rem;
     font-weight:normal;
-    text-transform:uppercase;
-    line-height:13px;
+    text-transform:none;
+    line-height:1.2rem;
+    border-radius:0;
 }
 .badge-style-type-simple.ytd-badge-supported-renderer{
     background:transparent;
-    border:1px solid #ddd;
-    color:#444;
+    border:1px solid #ccc;
+    color:#767676;
 }
 .badge-style-type-live-now.ytd-badge-supported-renderer{
     border:1px solid #e62117;
@@ -452,16 +488,19 @@ ytd-guide-entry-renderer[active] .title.ytd-guide-entry-renderer{
 }
 
 /*verified*/
-.badge-style-type-verified.ytd-badge-supported-renderer yt-icon.ytd-badge-supported-renderer{
+.badge-style-type-verified.ytd-badge-supported-renderer yt-icon.ytd-badge-supported-renderer,
+yt-icon.ytd-author-comment-badge-renderer{
     background:no-repeat url(//s.ytimg.com/yts/imgbin/www-hitchhiker-vflHFLZLR.webp) -240px -918px;
     background-size:auto;
     width:12px;
     height:9px;
 }
-.badge-style-type-verified.ytd-badge-supported-renderer yt-icon.ytd-badge-supported-renderer:hover{
+.badge-style-type-verified.ytd-badge-supported-renderer yt-icon.ytd-badge-supported-renderer:hover,
+yt-icon.ytd-author-comment-badge-renderer:hover{
     background-position:-81px -314px;
 }
-.badge-style-type-verified.ytd-badge-supported-renderer yt-icon.ytd-badge-supported-renderer svg{
+.badge-style-type-verified.ytd-badge-supported-renderer yt-icon.ytd-badge-supported-renderer svg,
+yt-icon.ytd-author-comment-badge-renderer svg{
     display:none!important;
 }
 
@@ -500,6 +539,32 @@ ytd-thumbnail-overlay-time-status-renderer{
     font-size:1.1rem;
     opacity:.75;
     border-radius:0;
+}
+
+/*resume playback*/
+ytd-thumbnail-overlay-resume-playback-renderer{
+    background-color:rgba(238,238,238,.6);
+}
+
+/*playlist*/
+ytd-thumbnail-overlay-hover-text-renderer yt-icon.ytd-thumbnail-overlay-hover-text-renderer{
+    fill:#d5d3d4;
+}
+/*sidebar*/
+ytd-thumbnail-overlay-side-panel-renderer{
+    font-size:1.8rem;
+    line-height:2.2rem;
+}
+yt-formatted-string.ytd-thumbnail-overlay-side-panel-renderer{
+    color:#cfcfcf;
+    opacity:.8;
+}
+yt-formatted-string.ytd-thumbnail-overlay-side-panel-renderer::after{
+    content:'Videos';
+    display:inline-block;
+    font-size:1rem;
+    line-height:1.25rem;
+    text-transform:uppercase;
 }
 
 
@@ -542,6 +607,7 @@ ytd-compact-video-renderer #video-title.ytd-compact-video-renderer{
 #byline-container.ytd-video-meta-block,
 #metadata-line.ytd-video-meta-block{
     font-size:1.1rem;
+    line-height:1.54rem;
 }
 
 
@@ -595,6 +661,24 @@ ytd-rich-item-renderer{
 }
 
 
+/*overlay*/
+iron-overlay-backdrop{
+    background-color:white;
+}
+iron-overlay-backdrop.opened{
+    opacity:.7;
+}
+ytd-popup-container.ytd-app paper-dialog{
+    box-shadow:0 0 15px rgba(0,0,0,.18);
+}
+
+
+/*expander*/
+ytd-expander[collapsed] > #content.ytd-expander{
+    max-height:65px;
+}
+
+
 /*video page*/
 /*player*/
 #player.ytd-watch-flexy{
@@ -604,6 +688,12 @@ ytd-rich-item-renderer{
 /*video info*/
 ytd-video-primary-info-renderer{
     padding-bottom:8px;
+}
+/*title*/
+.title.ytd-video-primary-info-renderer{
+    font-size:2rem;
+    font-weight:400;
+    width:75%;
 }
 #date.ytd-video-primary-info-renderer{
     color:#333;
@@ -661,7 +751,6 @@ ytd-comment-thread-renderer{
 ytd-comments-header-renderer{
     margin-top:0;
 }
-
 /*author*/
 #author-thumbnail.ytd-comment-renderer yt-img-shadow.ytd-comment-renderer{
     width:48px;
@@ -685,6 +774,32 @@ ytd-author-comment-badge-renderer{
 .published-time-text.ytd-comment-renderer{
     font-size:1.1rem;
 }
+/*content*/
+#content-text.ytd-comment-renderer{
+    font-size:1.3rem;
+    line-height:1.69rem;
+}
+/*actions*/
+#vote-count-middle.ytd-comment-action-buttons-renderer{
+    color:#128ee9;
+    font-size:1.2rem;
+    font-weight:400;
+    line-height:1.69rem;
+}
+#reply-button-end.ytd-comment-action-buttons-renderer {
+    opacity:.75;
+}
+#comment.ytd-comment-thread-renderer:hover #reply-button-end.ytd-comment-action-buttons-renderer{
+    opacity:1;
+}
+#reply-button-end.ytd-comment-action-buttons-renderer ytd-button-renderer #button.ytd-button-renderer{
+    padding:0;
+}
+ytd-comment-action-buttons-renderer:not([use-comment-icon]) #reply-button-end.ytd-comment-action-buttons-renderer ytd-button-renderer.ytd-comment-action-buttons-renderer:not([is-icon-button]).ytd-comment-action-buttons-renderer{
+    text-transform:none;
+    font-size:1.3rem;
+    font-weight:400;
+}
 /*hearted*/
 #hearted-thumbnail.ytd-creator-heart-renderer{
     border-radius:0;
@@ -694,6 +809,11 @@ ytd-author-comment-badge-renderer{
 .less-button-exp.ytd-comment-replies-renderer{
     color:#2793e6;
     font-size:1.3rem;
+    font-weight:500;
+}
+.more-button-exp.ytd-comment-replies-renderer:hover,
+.less-button-exp.ytd-comment-replies-renderer:hover{
+    text-decoration:underline;
 }
 .more-button-exp.ytd-comment-replies-renderer paper-button.ytd-button-renderer,
 .less-button-exp.ytd-comment-replies-renderer paper-button.ytd-button-renderer{
@@ -710,11 +830,26 @@ ytd-author-comment-badge-renderer{
     opacity:.7;
     vertical-align:text-bottom;
 }
-.more-button-exp.ytd-comment-replies-renderer yt-icon{
+.less-button-exp.ytd-comment-replies-renderer paper-button.ytd-button-renderer::before{
+    background:no-repeat url(//s.ytimg.com/yts/imgbin/www-comments-vflVHNGhW.webp) -152px -74px;
+    background-size:auto;
+    width:16px;
+    height:16px;
+    content:"";
+    display:inline-block;
+    opacity:.7;
+    vertical-align:text-bottom;
+}
+.more-button-exp.ytd-comment-replies-renderer yt-icon,
+.less-button-exp.ytd-comment-replies-renderer yt-icon{
     display:none;
 }
 #button.ytd-button-renderer yt-icon.ytd-button-renderer + yt-formatted-string.ytd-button-renderer{
     margin:0;
+}
+ytd-comment-renderer:not([comment-style="backstage-comment"])[is-reply] #author-thumbnail.ytd-comment-renderer yt-img-shadow.ytd-comment-renderer{
+    width:32px;
+    height:32px;
 }
 
 /*chat*/
