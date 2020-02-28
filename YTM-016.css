@@ -12,8 +12,8 @@ ytd-app,
 ytd-app[is-watch-page]{
     background-color:#f1f1f1!important;
 }
-#page-manager.ytd-app{
-    margin-top:49px;
+ytd-app[style*="56px"]{
+    --ytd-masthead-height:49px!important;
 }
 ytd-app[guide-persistent-and-visible] ytd-page-manager.ytd-app{
     margin-left:230px;
@@ -201,6 +201,11 @@ h2.ytd-simple-menu-header-renderer{
 paper-listbox{
     padding:10px 0;
 }
+.dropdown-content.paper-menu-button{
+    border:1px solid #ccc;
+    box-shadow:none;
+    max-width:none!important;
+}
 ytd-multi-page-menu-renderer,
 ytd-menu-popup-renderer{
     background-color:white;
@@ -220,6 +225,11 @@ paper-item.ytd-compact-link-renderer{
 ytd-multi-page-menu-renderer{
     min-width:212px;
 }
+
+/*items*/
+.dropdown-content.paper-menu-button paper-item{
+    padding:0 25px;
+}
 #items.yt-multi-page-menu-section-renderer > .yt-multi-page-menu-section-renderer:hover,
 paper-item.ytd-menu-service-item-renderer:hover{
     background-color:#f5f5f5;
@@ -236,6 +246,13 @@ ytd-menu-navigation-item-renderer[menu-refresh] yt-icon.ytd-menu-navigation-item
 #content-icon.ytd-compact-link-renderer,
 .content-icon.ytd-toggle-theme-compact-link-renderer{
     margin-right:30px;
+}
+paper-listbox.yt-dropdown-menu .iron-selected.yt-dropdown-menu{
+    display:none;
+}
+/*text*/
+.item.yt-dropdown-menu{
+    font-size:1.3rem;
 }
 
 /*copy link*/
@@ -573,7 +590,7 @@ yt-formatted-string.ytd-thumbnail-overlay-side-panel-renderer::after{
 #details.ytd-rich-grid-video-renderer{
     margin-top:1px;
 }
-/*avatar*/
+/*author*/
 #avatar-link.ytd-rich-grid-video-renderer{
     margin:0;
 }
@@ -587,7 +604,9 @@ ytd-rich-grid-video-renderer[mini-mode] h3.ytd-rich-grid-video-renderer{
     margin-bottom:0;
 }
 ytd-video-meta-block[rich-meta] #channel-name.ytd-video-meta-block,
-ytd-video-meta-block[rich-meta] #metadata-line.ytd-video-meta-block{
+ytd-video-meta-block[rich-meta] #metadata-line.ytd-video-meta-block,
+#byline-container.ytd-grid-video-renderer,
+#metadata-line.ytd-grid-video-renderer{
     font-size:1.1rem;
     line-height:1.43rem;
 }
@@ -596,12 +615,24 @@ ytd-rich-grid-video-renderer[mini-mode] #video-title.ytd-rich-grid-video-rendere
     font-size:1.3rem;
     line-height:1.69rem;
 }
-/*title*/
-#video-title.ytd-rich-grid-video-renderer{
-    color:#167ac6;
+
+/*thumbnail*/
+ytd-thumbnail.ytd-grid-video-renderer{
+    width:196px;
+    height:110px;
 }
 
-ytd-compact-video-renderer #video-title.ytd-compact-video-renderer{
+/*title*/
+#video-title.ytd-rich-grid-video-renderer,
+#video-title.yt-simple-endpoint.ytd-grid-video-renderer{
+    color:#167ac6;
+}
+h3.ytd-grid-video-renderer{
+    margin:0;
+}
+
+ytd-compact-video-renderer #video-title.ytd-compact-video-renderer,
+ytd-grid-video-renderer #video-title.yt-simple-endpoint.ytd-grid-video-renderer{
     font-size:1.4rem;
 }
 #byline-container.ytd-video-meta-block,
@@ -618,12 +649,23 @@ ytd-video-secondary-info-renderer,
 ytd-comments,
 #secondary-inner #related,
 ytd-backstage-post-thread-renderer[enable-borders-on-community],
-ytd-settings-sidebar-renderer{
+ytd-settings-sidebar-renderer,
+#primary.ytd-two-column-browse-results-renderer ytd-section-list-renderer{
     background-color:white;
-    padding:15px;
     box-shadow:0 1px 2px rgba(0,0,0,.1);
     margin:0 0 10px;
     border:0;
+}
+
+/*padding*/
+ytd-rich-grid-renderer,
+ytd-video-primary-info-renderer,
+ytd-video-secondary-info-renderer,
+ytd-comments,
+#secondary-inner #related,
+ytd-backstage-post-thread-renderer[enable-borders-on-community],
+ytd-settings-sidebar-renderer{
+    padding:15px;
 }
 
 
@@ -639,11 +681,12 @@ ytd-rich-grid-renderer{
     font-size:1.5rem;
     line-height:1.95rem;
 }
-ytd-rich-item-renderer{
+ytd-rich-item-renderer,
+#items.ytd-grid-renderer > ytd-grid-video-renderer.ytd-grid-renderer{
     width:196px;
-    margin-left:11px;
-    margin-right:-1px;
-    margin-bottom:12px;
+    margin-left:0;
+    margin-right:10px;
+    margin-bottom:20px;
 }
 #grid-header.ytd-rich-grid-renderer{
     margin-top:0px;
@@ -658,6 +701,26 @@ ytd-rich-item-renderer{
 #title.ytd-rich-shelf-renderer{
     font-size:1.5rem;
     line-height:1.95rem;
+}
+
+
+/*grid*/
+
+/*shelf*/
+.grid-subheader.ytd-shelf-renderer{
+    margin:0;
+}
+
+/*channel*/
+yt-img-shadow.ytd-grid-channel-renderer,
+yt-img-shadow.ytd-channel-renderer{
+    border-radius:0;
+}
+
+
+/*columns*/
+ytd-item-section-renderer{
+    padding:15px 18px;
 }
 
 
