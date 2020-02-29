@@ -298,6 +298,20 @@ should_not_match, .yt-icon-container.ytd-topbar-logo-renderer{
 #logo-red-icon-container.ytd-topbar-logo-renderer{
     width:108px;
 }
+.ytd-topbar-logo-renderer svg{
+    display:none!important;
+}
+#logo-icon-container.ytd-topbar-logo-renderer{
+    background:no-repeat url(/yts/img/ringo/hitchhiker/logo_small_2x-vfl4_cFqn.png);
+    background-size:100px 30px;
+    width:100px;
+    height:30px;
+}
+#logo-red-icon-container.ytd-topbar-logo-renderer{
+    background:no-repeat url(/yts/img/ringo/hitchhiker/logo_youtube_premium-vfltrvziB.png);
+    width:108px;
+    height:30px;
+}
 
 /*search bar*/
 #container.ytd-searchbox{
@@ -668,6 +682,7 @@ ytd-video-secondary-info-renderer,
 ytd-comments,
 #secondary-inner #related,
 ytd-playlist-sidebar-renderer #items.ytd-playlist-sidebar-renderer,
+ytd-browse-secondary-contents-renderer,
 ytd-backstage-post-thread-renderer[enable-borders-on-community],
 ytd-settings-sidebar-renderer,
 #primary.ytd-two-column-browse-results-renderer ytd-section-list-renderer{
@@ -681,9 +696,9 @@ ytd-settings-sidebar-renderer,
 ytd-rich-grid-renderer,
 ytd-video-primary-info-renderer,
 ytd-video-secondary-info-renderer,
-ytd-comments,
 #secondary-inner #related,
 ytd-playlist-sidebar-renderer #items.ytd-playlist-sidebar-renderer,
+ytd-browse-secondary-contents-renderer,
 ytd-backstage-post-thread-renderer[enable-borders-on-community],
 ytd-settings-sidebar-renderer{
     padding:15px;
@@ -864,11 +879,63 @@ ytd-author-comment-badge-renderer{
     line-height:1.69rem;
 }
 /*actions*/
+#action-buttons.ytd-comment-renderer{
+    margin-left:6px;
+}
+.ytd-comment-action-buttons-renderer yt-icon-button.ytd-toggle-button-renderer{
+    padding:0 3px;
+    height:14px;
+    width:20px;
+}
+#like-button.ytd-comment-action-buttons-renderer,
+#dislike-button.ytd-comment-action-buttons-renderer{
+    color:#919191;
+}
+#dislike-button.ytd-comment-action-buttons-renderer{
+    margin-right:8px;
+}
+#like-button.ytd-comment-action-buttons-renderer:hover,
+#dislike-button.ytd-comment-action-buttons-renderer:hover{
+    color:#858585;
+}
+#like-button.ytd-comment-action-buttons-renderer yt-icon,
+#dislike-button.ytd-comment-action-buttons-renderer yt-icon{
+    background:no-repeat url(//s.ytimg.com/yts/imgbin/www-comments-vflVHNGhW.webp);
+    background-size:auto;
+    width:14px;
+    height:14px;
+    opacity:.54;
+}
+#like-button.ytd-comment-action-buttons-renderer yt-icon:hover,
+#dislike-button.ytd-comment-action-buttons-renderer yt-icon:hover{
+    opacity:.6;
+}
+#like-button.ytd-comment-action-buttons-renderer yt-icon{
+    background-position:-206px 0;
+}
+#dislike-button.ytd-comment-action-buttons-renderer yt-icon{
+    background-position:-12px 0;
+}
+#like-button.ytd-comment-action-buttons-renderer.style-default-active[is-icon-button] yt-icon,
+#dislike-button.ytd-comment-action-buttons-renderer.style-default-active[is-icon-button] yt-icon{
+    opacity:1;
+}
+#like-button.ytd-comment-action-buttons-renderer.style-default-active[is-icon-button] yt-icon{
+    background-position:-12px -74px;
+}
+#dislike-button.ytd-comment-action-buttons-renderer.style-default-active[is-icon-button] yt-icon{
+    background-position:-30px 0;
+}
+#like-button.ytd-comment-action-buttons-renderer yt-icon svg,
+#dislike-button.ytd-comment-action-buttons-renderer yt-icon svg{
+    display:none!important;
+}
 #vote-count-middle.ytd-comment-action-buttons-renderer{
     color:#128ee9;
     font-size:1.2rem;
     font-weight:400;
     line-height:1.69rem;
+    margin-left:7px;
 }
 #reply-button-end.ytd-comment-action-buttons-renderer {
     opacity:.75;
@@ -987,6 +1054,9 @@ yt-live-chat-author-chip.yt-live-chat-text-message-renderer{
 #tabs-inner-container.ytd-c4-tabbed-header-renderer{
     background-color:white;
 }
+
+/*channels*/
+
 
 
 /*playlist*/
